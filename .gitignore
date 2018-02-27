@@ -3,3 +3,21 @@
 
 # Ada Library Information
 *.ali
+
+\.DS_Store
+
+*.csproj
+
+*.meta
+
+Library/
+
+*.sln
+
+*.userprefs
+
+ProjectSettings/
+
+UnityPackageManager/
+
+obj/
