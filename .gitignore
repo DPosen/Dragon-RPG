@@ -21,3 +21,5 @@ ProjectSettings/
 UnityPackageManager/
 
 obj/
+
+Temp/
