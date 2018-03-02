@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using RPG.CameraUI;
 
@@ -8,7 +6,7 @@ namespace RPG.Characters
 {
     public class Energy : MonoBehaviour
     {
-        [SerializeField] RawImage energyBar;
+        [SerializeField] RawImage energyBar = null;
         [SerializeField] float maxEnergyPoints = 100f;
         [SerializeField] float pointsPerHit = 10f;
 
@@ -20,15 +18,22 @@ namespace RPG.Characters
         {
             currentEnergyPoints = maxEnergyPoints;
             cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-            cameraRaycaster.notifyRightClickObservers += ProcessRightClick;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
 
-        void ProcessRightClick(RaycastHit raycastHit, int layerHit)
+        void OnMouseOverEnemy(Enemy enemy)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                UpdateEnergyPoints();
+                UpdateEnergyBar();
+            }
+        }
+
+        void UpdateEnergyPoints()
         {
             float newEnergyPoints = currentEnergyPoints - pointsPerHit;
             currentEnergyPoints = Mathf.Clamp(newEnergyPoints, 0, maxEnergyPoints);
-
-            UpdateEnergyBar();
         }
 
         void UpdateEnergyBar()
