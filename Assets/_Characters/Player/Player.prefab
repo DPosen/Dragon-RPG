@@ -82,12 +82,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb852f6acf5a44c28e13aedf93d45ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLayer: 9
   maxHealthPoints: 100
-  damagePerHit: 10
+  baseDamage: 11
   weaponInUse: {fileID: 11400000, guid: 2b06fc17a39c34a0dacfc3fdec8a1eae, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: 949bcac461c4b4bcca3844fe7c9edf4a,
     type: 2}
+  abilities:
+  - {fileID: 11400000, guid: 63a11feab168645ae8c88aa0aa6ff678, type: 2}
+  - {fileID: 11400000, guid: 941abf09ac47142769446cda429fafe9, type: 2}
 --- !u!114 &11469404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -754,7 +756,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyBar: {fileID: 0}
   maxEnergyPoints: 100
-  pointsPerHit: 10
 --- !u!114 &114707418515483046
 MonoBehaviour:
   m_ObjectHideFlags: 1
