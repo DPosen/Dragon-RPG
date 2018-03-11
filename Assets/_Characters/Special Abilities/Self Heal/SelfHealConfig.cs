@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    [CreateAssetMenu(menuName = ("RPG/Special Ability/Power Attack"))]
-    public class PowerAttackConfig : AbilityConfig
+    [CreateAssetMenu(menuName = ("RPG/Special Ability/Self Heal"))]
+    public class SelfHealConfig : AbilityConfig
     {
-        [Header("Power Attack Specific")]
-        [SerializeField]float extraDamage = 10f;
+        [Header("Self Heal Specific")]
+        [SerializeField] float extraHealth = 50f;
 
         public override void AttachComponentTo(GameObject gameObjectToattachTo) // overrides the method in the inherited class
         {
-            var behaviourCompenent = gameObjectToattachTo.AddComponent<PowerAttackBehaviour>();
+            var behaviourCompenent = gameObjectToattachTo.AddComponent<SelfHealBehaviour>();
             behaviourCompenent.SetConfig(this);
             behaviour = behaviourCompenent;
         }
 
-        public float GetExtraDamage()
+        public float GetExtraHealth()
         {
-            return extraDamage;
+            return extraHealth;
         }
     }
 }
