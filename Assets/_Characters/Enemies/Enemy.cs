@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO consider re-wiring
-using RPG.Core; 
-using RPG.Weapons; 
+using RPG.Core; // TODO consider re-wiring
 
 namespace RPG.Characters
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core; // TODO consider re-wiring
 
-namespace RPG.Weapons
+namespace RPG.Characters
 {
     public class Projectile : MonoBehaviour
     {

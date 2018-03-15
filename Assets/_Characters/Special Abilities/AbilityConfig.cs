@@ -22,11 +22,18 @@ namespace RPG.Characters
         [Header("Special Ability General")]
         [SerializeField] float energyCost = 10f;
         [SerializeField] GameObject particlePrefab = null;
-        [SerializeField] AudioClip audioClip = null;
+        [SerializeField] AudioClip[] audioClips = null;
 
-        protected ISpecialAbility behaviour; // only children of this class can use this component
+        protected AbilityBehaviour behaviour; // only children of this class can use this component
 
-        abstract public void AttachComponentTo(GameObject gameObjectToattachTo); // abstract requires that the inheriting class must have this method
+        public abstract AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo); // abstract can't be implmented here and requires that the inheriting class must have this method
+
+        public void AttachAbilityTo(GameObject objectToAttachTo)
+        {
+            AbilityBehaviour behaviourComponent = GetBehaviourComponent(objectToAttachTo);
+            behaviourComponent.SetConfig(this);
+            behaviour = behaviourComponent;
+        }
 
         public void Use(AbilityUseParams useParams)
         {
@@ -43,14 +50,9 @@ namespace RPG.Characters
             return particlePrefab;
         }
 
-        public AudioClip GetAudioClip()
+        public AudioClip GetRandomAbilitySound()
         {
-            return audioClip;
+            return audioClips[Random.Range(0, audioClips.Length)];
         }
-    }
-
-    public interface ISpecialAbility
-    {
-        void Use(AbilityUseParams useParams);
     }
 }
