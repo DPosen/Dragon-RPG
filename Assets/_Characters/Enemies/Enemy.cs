@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using RPG.Core; // TODO consider re-wiring
-
 namespace RPG.Characters
 {
     public class Enemy : MonoBehaviour
@@ -27,11 +25,6 @@ namespace RPG.Characters
         private void Start()
         {
             player = FindObjectOfType<PlayerMovement>();
-        }
-
-        public void TakeDamage(float amount)
-        {
-            // todo remove
         }
 
         private void Update()
