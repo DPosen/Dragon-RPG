@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.CameraUI; // TODO consider re-wiring
 
 namespace RPG.Characters
 {
@@ -12,6 +11,7 @@ namespace RPG.Characters
         [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;
+        [SerializeField] [Range(.1f, 1f)] float animatorForwardCap = 1f;
 
         [Header("Audio")]
         [Range(0, 1f)]
@@ -85,6 +85,11 @@ namespace RPG.Characters
             }
         }
 
+        public float GetAnimSpeedMultiplier()
+        {
+            return animator.speed;
+        }
+
         public void Kill()
         {
             isAlive = false;
@@ -122,7 +127,7 @@ namespace RPG.Characters
 
         void UpdateAnimator()
         {
-            animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+            animator.SetFloat("Forward", forwardAmount * animatorForwardCap, 0.1f, Time.deltaTime);
             animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
             animator.speed = animationSpeedMultiplier;
         }

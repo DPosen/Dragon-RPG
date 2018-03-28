@@ -10,6 +10,7 @@ namespace RPG.Characters
         [Header("Special Ability General")]
         [SerializeField] float energyCost = 10f;
         [SerializeField] GameObject particlePrefab = null;
+        [SerializeField] AnimationClip abilityAnimation;
         [SerializeField] AudioClip[] audioClips = null;
 
         protected AbilityBehaviour behaviour; // only children of this class can use this component
@@ -36,6 +37,11 @@ namespace RPG.Characters
         public GameObject GetParticlePrefab()
         {
             return particlePrefab;
+        }
+
+        public AnimationClip GetAbilityAnimation()
+        {
+            return abilityAnimation;
         }
 
         public AudioClip GetRandomAbilitySound()

@@ -6,11 +6,11 @@ namespace RPG.Characters
 {
     public class SelfHealBehaviour : AbilityBehaviour
     {
-        PlayerMovement player = null;
+        PlayerControl player = null;
 
         private void Start()
         {
-            player = GetComponent<PlayerMovement>();
+            player = GetComponent<PlayerControl>();
         }
 
         public void SetConfig(SelfHealConfig configToSet)
@@ -24,6 +24,7 @@ namespace RPG.Characters
             var playerHealth = player.GetComponent<HealthSystem>();
             playerHealth.Heal((config as SelfHealConfig).GetExtraHealth());
             PlayParticleEffect();
+            PlayAbilityAnimation();
         }
     }
 }
